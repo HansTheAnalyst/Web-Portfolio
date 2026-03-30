@@ -505,8 +505,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold mb-20 text-center text-[#0F172A]">Technical Skills</h2>
 
-          {/* ✅ UPDATED GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
             {[
               {
                 title: "Programming Languages",
@@ -544,27 +543,16 @@ export default function Home() {
                   i !== 3 ? "md:border-r md:border-[#334155]/20" : ""
                 } ${i === 0 ? "md:pr-10" : "md:pr-6"}`}
               >
-                <h3 className="font-semibold text-lg mb-8 text-[#0F172A] text-center">{section.title}</h3>
+                {/* ✅ KEEP TITLE CENTERED */}
+                <h3 className="font-semibold text-lg mb-8 text-[#0F172A] text-center md:text-left">{section.title}</h3>
 
-                {/* ✅ CLEAN SPACING + CENTER MOBILE */}
+                {/* ✅ LEFT ALIGNED CLEAN LIST */}
                 <div className="flex flex-col gap-6 items-center md:items-start">
                   {section.items.map(([img, label], j) => {
-                    let sizeClass = "h-10 w-10";
-
-                    if (label === "SQL" || label === "Google Sheets" || label === "VS Code") {
-                      sizeClass = "h-10 w-10";
-                    }
-
-                    if (label === "Tableau") {
-                      sizeClass = "h-10 w-10";
-                    }
+                    const sizeClass = "h-10 w-10";
 
                     return (
-                      /* ✅ FIXED ITEM ROW */
-                      <div
-                        key={j}
-                        className="flex flex-col md:flex-row items-center gap-2 md:gap-4 justify-center md:justify-start"
-                      >
+                      <div key={j} className="flex items-center gap-4 w-[200px] justify-start">
                         {img ? (
                           <>
                             <img src={img} className={`${sizeClass} object-contain`} />
