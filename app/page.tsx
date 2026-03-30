@@ -70,7 +70,6 @@ export default function Home() {
         <div className="absolute top-[-200px] left-[-200px] w-[600px] h-[600px] bg-blue-400 opacity-30 blur-[140px] rounded-full"></div>
         <div className="absolute bottom-[-200px] right-[-200px] w-[600px] h-[600px] bg-green-400 opacity-30 blur-[140px] rounded-full"></div>
 
-        {/* ✅ UPDATED GRID */}
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full text-center md:text-left">
           {/* TEXT */}
           <div>
@@ -85,7 +84,6 @@ export default function Home() {
 
             <p className="text-base text-[#334155] mb-8">SQL • Excel • Power BI • Tableau</p>
 
-            {/* ✅ FIXED BUTTON ALIGNMENT */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <a
                 href="#projects"
@@ -104,15 +102,65 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ✅ FIXED IMAGE ALIGNMENT */}
+          {/* IMAGE */}
           <div className="relative flex justify-center md:justify-end mt-10 md:mt-0">
-            <div className="absolute w-[320px] h-[400px] md:w-[380px] md:h-[460px] bg-[#3B82F6]/30 rounded-bl-[120px] right-[-40px] top-[40px] z-0"></div>
+            {/* BACK FRAME */}
+            <div
+              className="
+      absolute
+      w-[240px] h-[300px]
 
-            <div className="relative w-[320px] h-[400px] md:w-[380px] md:h-[460px] bg-white rounded-bl-[120px] overflow-hidden shadow-xl z-10">
+      sm:w-[260px] sm:h-[320px]
+
+      md:w-[380px] md:h-[460px]
+
+      bg-[#3B82F6]/30
+      rounded-bl-[90px] md:rounded-bl-[120px]
+
+      right-[-6px]
+      sm:right-[-12px]
+      md:right-[-40px]
+
+      top-[10px]
+      sm:top-[14px]
+      md:top-[40px]
+
+      z-0
+    "
+            ></div>
+
+            {/* FRONT CARD */}
+            <div
+              className="
+      relative
+      w-[240px] h-[300px]
+
+      sm:w-[260px] sm:h-[320px]
+
+      md:w-[380px] md:h-[460px]
+
+      bg-white
+      rounded-bl-[90px] md:rounded-bl-[120px]
+      overflow-hidden
+      shadow-xl
+      z-10
+      flex items-end justify-center
+    "
+            >
               <img
                 src="/pfp.png"
                 alt="profile"
-                className="absolute top-[-90px] left-1/2 -translate-x-[52%] h-[115%] md:h-[120%] w-auto"
+                className="
+        w-auto
+        h-[102%]
+        sm:h-[103%]
+        md:h-[115%]
+
+        object-cover
+
+        translate-y-[2px]
+        sm:translate-y-[1px]
+      "
               />
             </div>
           </div>
