@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
   type Project = {
     title: string;
     img: string;
@@ -16,33 +17,62 @@ export default function Home() {
   return (
     <main className="bg-[#F8FAFC] text-[#111827]">
       {/* NAV */}
-      <nav className="fixed top-0 w-full z-50 bg-[#F8FAFC]/70 backdrop-blur-md border-b border-[#334155]/10">
+      <nav className="fixed top-0 w-full z-50 bg-[#F8FAFC]/90 backdrop-blur-md border-b border-[#334155]/10">
         <div className="flex justify-between items-center px-6 md:px-10 py-4">
-          <h1 className="text-lg md:text-xl font-bold tracking-wide text-[#0F172A]">HansTheAnalyst</h1>
+          <h1 className="text-lg md:text-xl font-bold text-[#0F172A]">HansTheAnalyst</h1>
 
-          <div className="flex gap-10 md:gap-12 text-sm md:text-base font-semibold">
+          {/* DESKTOP MENU */}
+          <div className="hidden md:flex gap-10 text-sm font-semibold">
             {[
               { label: "Home", id: "top" },
               { label: "About Me", id: "about" },
               { label: "Projects", id: "projects" },
-              { label: "Background", id: "background" }, // ✅ NEW
+              { label: "Background", id: "background" },
               { label: "Skills", id: "skills" },
               { label: "Contact", id: "contact" },
             ].map((item, i) => (
-              <a key={i} href={`#${item.id}`} className="hover:text-[#3B82F6] transition text-[#334155]">
+              <a key={i} href={`#${item.id}`} className="hover:text-[#3B82F6]">
                 {item.label}
               </a>
             ))}
           </div>
+
+          {/* MOBILE BUTTON */}
+          <button className="md:hidden text-2xl" onClick={() => setMenuOpen(!menuOpen)}>
+            ☰
+          </button>
         </div>
+
+        {/* MOBILE DROPDOWN */}
+        {menuOpen && (
+          <div className="md:hidden flex flex-col gap-4 px-6 pb-6 bg-[#F8FAFC] border-t">
+            {[
+              { label: "Home", id: "top" },
+              { label: "About Me", id: "about" },
+              { label: "Projects", id: "projects" },
+              { label: "Background", id: "background" },
+              { label: "Skills", id: "skills" },
+              { label: "Contact", id: "contact" },
+            ].map((item, i) => (
+              <a key={i} href={`#${item.id}`} onClick={() => setMenuOpen(false)} className="text-[#334155] font-medium">
+                {item.label}
+              </a>
+            ))}
+          </div>
+        )}
       </nav>
 
       {/* HERO */}
-      <section id="top" className="min-h-screen flex items-center px-6 md:px-16 bg-[#F8FAFC] relative overflow-hidden">
+      <section
+        id="top"
+        className="min-h-screen flex items-center px-6 md:px-16 pt-28 md:pt-24 bg-[#F8FAFC] relative overflow-hidden"
+      >
         <div className="absolute top-[-200px] left-[-200px] w-[600px] h-[600px] bg-blue-400 opacity-30 blur-[140px] rounded-full"></div>
         <div className="absolute bottom-[-200px] right-[-200px] w-[600px] h-[600px] bg-green-400 opacity-30 blur-[140px] rounded-full"></div>
 
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center w-full">
+        {/* ✅ UPDATED GRID */}
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full text-center md:text-left">
+          {/* TEXT */}
           <div>
             <p className="text-base text-[#334155] mb-4 tracking-wide">Data Analyst Portfolio</p>
 
@@ -52,9 +82,11 @@ export default function Home() {
             </h1>
 
             <p className="text-xl text-[#334155] mb-5">Data Analyst | Turning Data into Business Insights</p>
+
             <p className="text-base text-[#334155] mb-8">SQL • Excel • Power BI • Tableau</p>
 
-            <div className="flex gap-5">
+            {/* ✅ FIXED BUTTON ALIGNMENT */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <a
                 href="#projects"
                 className="bg-[#0F172A] text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-[#1E293B] transition"
@@ -72,7 +104,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative flex justify-center md:justify-end">
+          {/* ✅ FIXED IMAGE ALIGNMENT */}
+          <div className="relative flex justify-center md:justify-end mt-10 md:mt-0">
             <div className="absolute w-[320px] h-[400px] md:w-[380px] md:h-[460px] bg-[#3B82F6]/30 rounded-bl-[120px] right-[-40px] top-[40px] z-0"></div>
 
             <div className="relative w-[320px] h-[400px] md:w-[380px] md:h-[460px] bg-white rounded-bl-[120px] overflow-hidden shadow-xl z-10">
@@ -425,7 +458,8 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold mb-20 text-center text-[#0F172A]">Technical Skills</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+          {/* ✅ UPDATED GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
             {[
               {
                 title: "Programming Languages",
@@ -465,21 +499,25 @@ export default function Home() {
               >
                 <h3 className="font-semibold text-lg mb-8 text-[#0F172A] text-center">{section.title}</h3>
 
-                <div className="flex flex-col gap-6">
+                {/* ✅ CLEAN SPACING + CENTER MOBILE */}
+                <div className="flex flex-col gap-6 items-center md:items-start">
                   {section.items.map(([img, label], j) => {
-                    // ✅ CUSTOM SIZE LOGIC
-                    let sizeClass = "h-10 w-10"; // default
+                    let sizeClass = "h-10 w-10";
 
                     if (label === "SQL" || label === "Google Sheets" || label === "VS Code") {
-                      sizeClass = "h-10 w-10"; // +2
+                      sizeClass = "h-10 w-10";
                     }
 
                     if (label === "Tableau") {
-                      sizeClass = "h-10 w-10"; // +3
+                      sizeClass = "h-10 w-10";
                     }
 
                     return (
-                      <div key={j} className="flex items-center gap-4">
+                      /* ✅ FIXED ITEM ROW */
+                      <div
+                        key={j}
+                        className="flex flex-col md:flex-row items-center gap-2 md:gap-4 justify-center md:justify-start"
+                      >
                         {img ? (
                           <>
                             <img src={img} className={`${sizeClass} object-contain`} />
