@@ -103,7 +103,7 @@ export default function Home() {
           </div>
 
           {/* IMAGE */}
-          <div className="relative flex justify-center md:justify-end mt-10 md:mt-0">
+          <div className="relative flex justify-center md:justify-end mt-[-30px] sm:mt-[-20px] md:mt-0">
             {/* BACK FRAME */}
             <div
               className="
@@ -144,6 +144,7 @@ export default function Home() {
       overflow-hidden
       shadow-xl
       z-10
+
       flex items-end justify-center
     "
             >
@@ -151,16 +152,14 @@ export default function Home() {
                 src="/pfp.png"
                 alt="profile"
                 className="
-        w-auto
-        h-[102%]
-        sm:h-[103%]
-        md:h-[115%]
+    w-auto
+    h-[108%]
+    sm:h-[110%]
+    md:h-[120%]
 
-        object-cover
-
-        translate-y-[2px]
-        sm:translate-y-[1px]
-      "
+    object-contain
+    object-bottom
+  "
               />
             </div>
           </div>
